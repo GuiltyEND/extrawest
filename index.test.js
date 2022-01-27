@@ -1,13 +1,15 @@
-import { basicOp } from './index'
-import { stringMerge } from './index'
-import { createPhoneNumber } from './index'
-import { getOperands } from './index'
-import { getTime } from './index'
-import{isPalindrome} from './index'
-import { swapCase } from './index'
-import { countOccurrences } from './index'
-import { vowelCount } from './index'
-import { alphabetPosition } from './index'
+import {
+    basicOp,
+    stringMerge,
+    createPhoneNumber,
+    getOperands,
+    getTime,
+    isPalindrome,
+    swapCase,
+    countOccurrences,
+    vowelCount,
+    alphabetPosition } from './index';
+
 
 // 1
 
@@ -177,7 +179,7 @@ describe('countOccurrences', function () {
 })
 
 
-// 10g
+// 10
 
 describe('alphabetPosition', function () {
     test('should return 5 when passed "The sunset sets at twelve o`clock."', function () {

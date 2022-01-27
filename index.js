@@ -2,40 +2,26 @@
 // 1
 export function basicOp(operation, a, b,) 
 {
-    if (operation == '+')
-        {
-        return a + b; 
-        }
-    else if (operation == '-')
-        {
-        return a - b;
-        }
-
-    else if (operation == '*')
-        {
-        return a * b; 
-        }
-
-    else if (operation == '/') 
-        {
-        return a / b; 
-        }
-
-    else 
-        { 
-        return 0 ;
-        }
-
-    let result;
-  
-    return result;
+    switch (operation) 
+    {
+        case '+':
+            return a + b
+            break
+        case '-':
+            return a - b
+            break
+        case '*':
+            return a * b
+            break
+        case '/':
+            return a / b
+            break
+        default: return 0
+            break
+    }
 }
 
-console.log(basicOp('+', 4, 7));
-console.log(basicOp('-', 15, 18));
-console.log(basicOp('*', 5, 5)) ;
-console.log(basicOp('/', 49, 7));
-console.log(basicOp('something else', 45, 45)) ;
+
 
 // 2
 
@@ -70,9 +56,6 @@ function stringMerge(first,second,letter){
     first=first.join('');
     return first;
 }
-console.log( stringMerge("hello", "world", "l"));
-console.log( stringMerge("coding", "anywhere", "n") )
-console.log( stringMerge("jason", "samson", "s"))
 
 
 // 3
@@ -82,7 +65,7 @@ console.log( stringMerge("jason", "samson", "s"))
     const begging = numbers.slice(0, 3);
     const middle = numbers.slice(3, 6);
     const end = numbers.slice(6);
-    console.log('(' + begging.join('') + ')' + ' ' + middle.join('') + '-' + end.join(''));
+    return('(' + begging.join('') + ')' + ' ' + middle.join('') + '-' + end.join(''));
 }
 
 createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
@@ -95,10 +78,6 @@ export function getOperands(numb){
     return('a:' + numb[0] + 'b:'+ numb[2]);
 }
 
-console.log (getOperands('1 + 2'));     
-console.log (getOperands('1.2 * -3.4'));       
-console.log (getOperands('1 - 2'));     
-console.log (getOperands('1 - -2'));
 
 // 5
 
@@ -127,8 +106,6 @@ export  function isPalindrome(letter) {
     }
     return ans;
 }   
-console.log(isPalindrome('Eva, can I see bees in a cave?')); 
-
 
 
 // 7
@@ -141,11 +118,6 @@ export function swapCase(regExp) {
 }
 
 
-
-swapCase("aBc");            //"AbC"
-swapCase("GooD");         //"gOOd"
-swapCase("hello");         //"HELLO"
-swapCase("75386");        //"75386"
 
 
 //8
@@ -169,9 +141,7 @@ export function countOccurrences(word,letter){
 };
 
 
-countOccurrences('ability', 'i') ;        // 2
-countOccurrences('abc', 'a')             //1
-countOccurrences('ABC', 'a')             //1
+
 
 
 //9
@@ -191,4 +161,3 @@ countOccurrences('ABC', 'a')             //1
     return arr.join(' ');
 }
 
-alphabetPosition("The sunset sets at twelve o' clock.")               // "20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11"
