@@ -37,7 +37,7 @@ export function stringMerge(first, second, letter) {
 
 
 
-function stringMerge(first,second,letter){
+export function stringMerge(first,second,letter){
     first=first.split('');
     second=second.split('');
     for(let i = 0; i<= first.length; i++){
@@ -61,7 +61,7 @@ function stringMerge(first,second,letter){
 // 3
 
 
- function createPhoneNumber(numbers) {
+ export function createPhoneNumber(numbers) {
     const begging = numbers.slice(0, 3);
     const middle = numbers.slice(3, 6);
     const end = numbers.slice(6);
@@ -84,9 +84,13 @@ export function getOperands(numb){
 
 
 export function getTime(str) {
-    const result = str.match(/(0[0-9]|1[0-9]|2[0-3]|[0-9]):[0-5][0-9]/g)
-    return result[0]
+    const result = str.match(/(0[0-9]|1[0-9]|2[0-3]|[0-9]):[0-5][0-9]/g);
+    if (result) {
+        return result[0];
+    }
+    return '';
 }
+
 
 
 // 6
@@ -94,11 +98,13 @@ export function getTime(str) {
 
 
 
-export  function isPalindrome(letter) {
+export  function isPalindrome(str) {
     let ans;
-    letter = letter.replace(/[^a-zA-Z]+/g, '').toLowerCase();
-    let newLetter = letter.split("").reverse().join("");
-    if(newLetter == letter){
+    str = str.replace(/[^a-zA-Z]+/g, '').toLowerCase();
+    const newstr = str.split("")
+    .reverse()
+    .join("");
+    if(newstr === str){
         ans = true;
     }else
     {
@@ -114,7 +120,7 @@ export  function isPalindrome(letter) {
 
 
 export function swapCase(regExp) {
-    return( regExp.replace(/./g,a=>a==a.toUpperCase() ?  a.toLowerCase() : a.toUpperCase()))
+    return(string.replace(/./g,letter=>letter==letter.toUpperCase() ?  letter.toLowerCase() : letter.toUpperCase()))
 }
 
 
@@ -127,12 +133,12 @@ export function swapCase(regExp) {
 export function countOccurrences(word,letter){
     let count=0;
     
-    word = word.toLowerCase();
-    letter = letter.toLowerCase();
+    word.toLowerCase();
+    letter.toLowerCase();
 
     for(let i = 0; i < word.length; i++){
         
-        if(word[i]==letter){
+        if(word[i]===letter){
             count++;
         }
     }
@@ -145,6 +151,18 @@ export function countOccurrences(word,letter){
 
 
 //9
+export function vowelCount(str){
+    const letter = ['a','e','o','u','i'];
+    let count=0;
+
+    for(let i = 0; i < str.length; i++){
+        if(letter.includes(str[i])){
+            count++;
+        }
+    }
+
+    return count;
+}
 
 
 
@@ -153,11 +171,11 @@ export function countOccurrences(word,letter){
 // 10
  export function alphabetPosition(letter) {
     const arr = []
-    letter = letter.replace(/[^a-zA-Z]+/g, '').toLowerCase();
+    letter.replace(/[^a-zA-Z]+/g, '').toLowerCase();
 
     for (let i = 0; i < letter.length; i++) {
         arr.push(letter[i].charCodeAt(0) - 96);
     }
     return arr.join(' ');
 }
-
+ 

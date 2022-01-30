@@ -123,17 +123,33 @@ describe('getTime', function () {
         const result = getTime('Breakfast at 09:59, Dinner at 21:00')
         expect(result).toBe('09:59')
     })
-    test('should return empty string when time is wrong', function() {
-        const result = getTime('Breakfast at 37:98')
-        expect(result).toBe('undefined')
+    test('should return empty string when time is wrong', function () {
+        const result = getTime('When pass string Breakfast at 09:69, Dinner at 37:98, then get empty string')
+        expect(result).toBe('')
     })
-})
+    })
+
 
 // 6
 
 
 
+describe('isPalindrome', function () {
+    test('should return true when passed "Eva, can I see bees in a cave?"', function () {
+        const result = isPalindrome('Eva, can I see bees in a cave?')
+        expect(result).toBe(true)
+    })
 
+    test('should return false when passed "race a car"', function () {
+        const result = isPalindrome('race a car')
+        expect(result).toBe(false)
+    })
+
+    test('should return true when passed "Was it a cat I saw?"', function () {
+        const result = isPalindrome('Was it a cat I saw?')
+        expect(result).toBe(true)
+    })
+})
 
 // 7
 
@@ -178,8 +194,33 @@ describe('countOccurrences', function () {
     })
 })
 
+// 9
 
-// 10
+
+describe('vowelCount', function() {
+    test('should return count of vowel in word',
+        function () {
+            const result = vowelCount('abracadabra')
+            expect(result).toBe(5)
+        })
+        test('should return count of vowel in word',
+        function () {
+            const result = vowelCount('letter')
+            expect(result).toBe(2)
+        })
+        test('should return count of vowel in word',
+        function () {
+            const result = vowelCount('toy')
+            expect(result).toBe(1)
+        })
+        test('should return count of vowel in word',
+        function () {
+            const result = vowelCount('555')
+            expect(result).toBe(0)
+        })
+})
+
+//  10
 
 describe('alphabetPosition', function () {
     test('should return 5 when passed "The sunset sets at twelve o`clock."', function () {
