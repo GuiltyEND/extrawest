@@ -45,7 +45,6 @@ describe('basicOp', function () {
 // 2
 
 
-
 describe('stringMerge', function () {
     test('should return held when passed "hello", "world", "l"', function () {
         const result = stringMerge("hello", "world", "l")
@@ -69,6 +68,7 @@ describe('stringMerge', function () {
 })
 
 
+
 // 3
 
 
@@ -86,22 +86,22 @@ describe('createPhoneNumber', function () {
 describe('getOperands', function () {
     test('should return "a: 1, b: 2" when passed "1 + 2"', function () {
         const numb = getOperands('1 + 2')
-        expect(numb).toBe('a: 1, b: 2')
+        expect(numb).toBe('a:1b:2')
     })
 
     test('should return "a: 1.2, b: -3.4" when passed "1.2 * -3.4"', function () {
         const numb = getOperands('1.2 * -3.4')
-        expect(numb).toBe('a: 1.2, b: -3.4')
+        expect(numb).toBe('a:1.2b:-3.4')
     })
 
     test('should return "a: 1, b: 2" when passed "1 - 2"', function () {
         const numb = getOperands('1 - 2')
-        expect(numb).toBe('a: 1, b: 2')
+        expect(numb).toBe('a:1b:2')
     })
 
     test('should return "a: 1, b: -2" when passed "1 - -2"', function () {
         const numb = getOperands('1 - -2')
-        expect(numb).toBe('a: 1, b: -2')
+        expect(numb).toBe('a:1b:-2')
     })
 })
 
@@ -151,7 +151,7 @@ describe('isPalindrome', function () {
     })
 })
 
-// 7
+// // 7
 
 
 

@@ -1,4 +1,4 @@
-
+'use strict';
 // 1
 export function basicOp(operation, a, b,) 
 {
@@ -25,14 +25,14 @@ export function basicOp(operation, a, b,)
 
 // 2
 
-export function stringMerge(first, second, letter) {
-    const num = first.indexOf(letter)
-    first = first.slice(0, num)
-    num = second.indexOf(letter)
-    second = second.slice(num + 1)
+//  export function stringMerge(first, second, letter) {
+//     let num = first.indexOf(letter)
+//     first = first.slice(0, num)
+//     num = second.indexOf(letter)
+//     second = second.slice(num + 1)
 
-    return first + letter + second  
-}
+//     return first + letter + second  
+// }
 
 
 
@@ -98,7 +98,7 @@ export function getTime(str) {
 
 
 
-export  function isPalindrome(str) {
+  export function isPalindrome(str) {
     let ans;
     str = str.replace(/[^a-zA-Z]+/g, '').toLowerCase();
     const newstr = str.split("")
@@ -119,7 +119,7 @@ export  function isPalindrome(str) {
 
 
 
-export function swapCase(regExp) {
+export function swapCase(string) {
     return(string.replace(/./g,letter=>letter==letter.toUpperCase() ?  letter.toLowerCase() : letter.toUpperCase()))
 }
 
@@ -130,11 +130,11 @@ export function swapCase(regExp) {
 
 
 
-export function countOccurrences(word,letter){
+ export function countOccurrences(word,letter){
     let count=0;
     
-    word.toLowerCase();
-    letter.toLowerCase();
+   word = word.toLowerCase();
+    letter =  letter.toLowerCase();
 
     for(let i = 0; i < word.length; i++){
         
@@ -145,6 +145,7 @@ export function countOccurrences(word,letter){
     return(count);
 
 };
+
 
 
 
@@ -171,7 +172,7 @@ export function vowelCount(str){
 // 10
  export function alphabetPosition(letter) {
     const arr = []
-    letter.replace(/[^a-zA-Z]+/g, '').toLowerCase();
+   letter = letter.replace(/[^a-zA-Z]+/g, '').toLowerCase();
 
     for (let i = 0; i < letter.length; i++) {
         arr.push(letter[i].charCodeAt(0) - 96);
