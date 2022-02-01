@@ -26,48 +26,48 @@ export function calculateRentalCost(rentDays){
 // 3
 
 
-// function isPrime(num) {
-//     for(let i = 2; i < num; i++)
-//       if(num % i === 0) return false;
-//     return num > 1;
-//   }
+function isPrime(num) {
+    for(let i = 2; i < num; i++)
+      if(num % i === 0) return false;
+    return num > 1;
+  }
 
 
-//   // 4
-//   let moveZeros = function (arr) {
-//     const zeros = arr.filter((elm) => elm === 0).length;
-//     const result = arr.filter((elm) => elm !== 0);
+  // 4
+  let moveZeros = function (arr) {
+    const zeros = arr.filter((elm) => elm === 0).length;
+    const result = arr.filter((elm) => elm !== 0);
     
-//     for (let i = 0; i < zeros; i += 1) {
-//       result.push(0);
-//     }
+    for (let i = 0; i < zeros; i += 1) {
+      result.push(0);
+    }
     
-//     return result;
-//   }
+    return result;
+  }
 
 
-// // 5
+// 5
 
 
-// function reverseWords(str){
-//   return str.split("").reverse().join("").split(" ").reverse().join(" ");
-// }
+function reverseWords(str){
+  return str.split("").reverse().join("").split(" ").reverse().join(" ");
+}
 
 
-// // 6
+// 6
 
 
 
 
 
-// // 7
+// 7
 
 
-// function invertColor(hex) {
-//   if (hex.length === 7 && hex[0] === '#') {
-//       hex = hex.slice(1)
-//       return '#' + (Number(`0x${hex}`) ^ 0xFFFFFF).toString(16).toLocaleLowerCase()
-//   }
-//   return 'Error'
-// }
+function invertColor(hex) {
+  if (hex.length === 7 && hex[0] === '#') {
+      hex = hex.slice(1)
+      return '#' + (Number(`0x${hex}`) ^ 0xFFFFFF).toString(16).toLocaleLowerCase()
+  }
+  return 'Error'
+}
 
