@@ -1,230 +1,277 @@
-import {
-    basicOp,
-    stringMerge,
-    createPhoneNumber,
-    getOperands,
-    getTime,
-    isPalindrome,
-    swapCase,
-    countOccurrences,
-    vowelCount,
-    alphabetPosition } from './index';
+import { calculateRentalCost,
+        openOrSenior,
+        isPrime,
+        moveZeros,
+        reverseWords,
+        createUrl,
+        invertColor,
+		makeArmy,
+		createPrevArgSaver,
+		createAdder} from './index';
 
-
-// 1
-
-
-
-describe('basicOp', function () {
-    test('should return 4 when passed +, 2, 2', function () {
-        const result = basicOp('+', 2, 2)
-        expect(result).toBe(4)
+describe('calculateRentalCost',() =>     {
+    test('should return 80 when passed 2', function () {
+        const result = calculateRentalCost(2)
+        expect(result).toBe(80)
     })
 
-    test('should return -3 when passed -, 15, 18', function () {
-        const result = basicOp('-', 15, 18)
-        expect(result).toBe(-3)
+    test('should return 100 when passed 3', function () {
+        const result = calculateRentalCost(3)
+        expect(result).toBe(100)
     })
 
-    test('should return 25 when passed *, 5, 5', function () {
-        const result = basicOp('*', 5, 5)
-        expect(result).toBe(25)
+    test('should return 230 when passed 7', function () {
+        const result = calculateRentalCost(7)
+        expect(result).toBe(230)
     })
 
-    test('should return 7 when passed /, 49, 7', function () {
-        const result = basicOp('/', 49, 7)
-        expect(result).toBe(7)
-    })
-
-    test('should return 0 when passed any, 45, 45', function () {
-        const result = basicOp('something else', 45, 45)
+    test('should return 0 when passed 0', function () {
+        const result = calculateRentalCost(0)
         expect(result).toBe(0)
     })
 })
 
-// 2
+describe('openOrSenior', () => {
+	test('should return [Open, Senior, Open, Senior] when passed [[31, 10],[55,23],[20, 0],[41, 16]]', () => {
+		const result = openOrSenior([[31, 10], [55, 23], [20, 0], [41, 16]]);
+
+		expect(result).toStrictEqual(['Open', 'Senior', 'Open', 'Senior']);
+	});
+
+	test('should return [Open, Open, Open, Open] when passed [[34, 11],[55,7],[39, 16],[38, 14]]', () => {
+		const result = openOrSenior([[34, 11], [55, 7], [39, 16], [38, 14]]);
+
+		expect(result).toStrictEqual(['Open', 'Open', 'Open', 'Open']);
+	});
+});
 
 
-describe('stringMerge', function () {
-    test('should return held when passed "hello", "world", "l"', function () {
-        const result = stringMerge("hello", "world", "l")
-        expect(result).toBe('held')
-    })
+describe('isPrime', () => {
+	test('should return true when passed 2', () => {
+		const result = isPrime(2);
 
-    test('should return codinywhere when passed "coding", "anywhere", "n"', function () {
-        const result = stringMerge("coding", "anywhere", "n")
-        expect(result).toBe('codinywhere')
-    })
+		expect(result).toBe(true);
+	});
 
-    test('should return jasamson when passed "jason", "samson", "s"', function () {
-        const result = stringMerge("jason", "samson", "s")
-        expect(result).toBe('jasamson')
-    })
+	test('should return true when passed 73', () => {
+		const result = isPrime(73);
 
-    test('should return wondeople when passed "wonderful", "people", "e"', function () {
-        const result = stringMerge("wonderful", "people", "e")
-        expect(result).toBe('wondeople')
-    })
-})
+		expect(result).toBe(true);
+	});
 
+	test('should return false when passed 1', () => {
+		const result = isPrime(1);
 
+		expect(result).toBe(false);
+	});
 
-// 3
+	test('should return false when passed 75', () => {
+		const result = isPrime(75);
 
+		expect(result).toBe(false);
+	});
 
-describe('createPhoneNumber', function () {
-    test('should return "(123) 456-7890" when passed [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]', function () {
-        const result = createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
-        expect(result).toBe('(123) 456-7890')
-    })
-})
+	test('should return false when passed -1', () => {
+		const result = isPrime(-1);
 
-
-
-// 4
-
-describe('getOperands', function () {
-    test('should return "a: 1, b: 2" when passed "1 + 2"', function () {
-        const numb = getOperands('1 + 2')
-        expect(numb).toBe('a:1b:2')
-    })
-
-    test('should return "a: 1.2, b: -3.4" when passed "1.2 * -3.4"', function () {
-        const numb = getOperands('1.2 * -3.4')
-        expect(numb).toBe('a:1.2b:-3.4')
-    })
-
-    test('should return "a: 1, b: 2" when passed "1 - 2"', function () {
-        const numb = getOperands('1 - 2')
-        expect(numb).toBe('a:1b:2')
-    })
-
-    test('should return "a: 1, b: -2" when passed "1 - -2"', function () {
-        const numb = getOperands('1 - -2')
-        expect(numb).toBe('a:1b:-2')
-    })
-})
-
-// 5
-
-
-describe('getTime', function () {
-    test('should return "09:00" when passed "Breakfast at 09:00"', function () {
-        const result = getTime('Breakfast at 09:00')
-        expect(result).toBe('09:00')
-    })
-
-    test('should return "21:00" when passed "Breakfast at 09:60, Dinner at 21:00"', function () {
-        const result = getTime('Breakfast at 09:60, Dinner at 21:00')
-        expect(result).toBe('21:00')
-    })
-
-    test('should return "09:59" when passed "Breakfast at 09:59, Dinner at 21:00"', function () {
-        const result = getTime('Breakfast at 09:59, Dinner at 21:00')
-        expect(result).toBe('09:59')
-    })
-    test('should return empty string when time is wrong', function () {
-        const result = getTime('When pass string Breakfast at 09:69, Dinner at 37:98, then get empty string')
-        expect(result).toBe('')
-    })
-    })
-
-
-// 6
+		expect(result).toBe(false);
+	});
+});
 
 
 
-describe('isPalindrome', function () {
-    test('should return true when passed "Eva, can I see bees in a cave?"', function () {
-        const result = isPalindrome('Eva, can I see bees in a cave?')
-        expect(result).toBe(true)
-    })
+describe('moveZeros', () => {
+	test('should return [false,1,1,2,1,3,"a",0,0] when passed [false,1,0,1,2,0,1,3,"a"]', () => {
+		const result = moveZeros([false, 1, 0, 1, 2, 0, 1, 3, 'a']);
 
-    test('should return false when passed "race a car"', function () {
-        const result = isPalindrome('race a car')
-        expect(result).toBe(false)
-    })
-
-    test('should return true when passed "Was it a cat I saw?"', function () {
-        const result = isPalindrome('Was it a cat I saw?')
-        expect(result).toBe(true)
-    })
-})
-
-// // 7
+		expect(result).toStrictEqual([false, 1, 1, 2, 1, 3, 'a', 0, 0]);
+	});
+});
 
 
+describe('reverseWords', () => {
+	test('should return "elbuod  secaps" when passed "double  spaces"', () => {
+		const result = reverseWords('double  spaces');
 
-describe('swapCase', function () {
-    test('should return AbC when passed "aBc"', function () {
-        const result = swapCase('aBc')
-        expect(result).toBe('AbC')
-    })
+		expect(result).toBe('elbuod  secaps');
+	});
 
-    test('should return gOOd when passed "GooD"', function () {
-        const result = swapCase('GooD')
-        expect(result).toBe('gOOd')
-    })
+	test('should return 100 when passed "The quick brown fox jumps over the lazy dog."', () => {
+		const result = reverseWords('The quick brown fox jumps over the lazy dog.');
 
-    test('should return HELLO when passed "hello"', function () {
-        const result = swapCase('hello')
-        expect(result).toBe('HELLO')
-    })
-})
+		expect(result).toBe('ehT kciuq nworb xof spmuj revo eht yzal .god');
+	});
+});
 
 
+describe('createUrl', () => {
+	test('should return /api/0 when passed /api/{id}, {id: 0}', () => {
+		const result = createUrl('/api/{id}', { id: 0 });
+
+		expect(result).toBe('/api/0');
+	});
+
+	test('should return /api/undefined when passed /api/{id}, {name: Petya}', () => {
+		const result = createUrl('/api/{id}', { name: 'Petya' });
+
+		expect(result).toBe('/api/undefined');
+	});
+
+	test('should return /api/items/0 when passed /api/{list}/{id}, {list: items, id: 0}', () => {
+		const result = createUrl('/api/{list}/{id}', {
+			list: 'items', id: 0,
+		});
+
+		expect(result).toBe('/api/items/0');
+	});
+});
 
 
-// 8
+describe('invertColor', () => {
+	test('should return #ffffff when passed #000000', () => {
+		const result = invertColor('#000000');
 
-describe('countOccurrences', function () {
-    test('should return 2 when passed "ability", "i"', function () {
-        const result = countOccurrences('ability', 'i')
-        expect(result).toBe(2)
-    })
+		expect(result).toBe('#ffffff');
+	});
 
-    test('should return 1 when passed "ability", "i"', function () {
-        const result = countOccurrences('abc', 'a')
-        expect(result).toBe(1)
-    })
+	test('should return #221155 when passed #DDEEAA', () => {
+		const result = invertColor('#DDEEAA');
 
-    test('should return 1 when passed "ability", "i"', function () {
-        const result = countOccurrences('ABC', 'a')
-        expect(result).toBe(1)
-    })
-})
+		expect(result).toBe('#221155');
+	});
 
-// 9
+	test('should return #FEDCBA when passed #012345', () => {
+		const result = invertColor('#012345');
 
+		expect(result).toBe('#fedcba');
+	});
+});
 
-describe('vowelCount', function() {
-    test('should return count of vowel in word',
-        function () {
-            const result = vowelCount('abracadabra')
-            expect(result).toBe(5)
-        })
-        test('should return count of vowel in word',
-        function () {
-            const result = vowelCount('letter')
-            expect(result).toBe(2)
-        })
-        test('should return count of vowel in word',
-        function () {
-            const result = vowelCount('toy')
-            expect(result).toBe(1)
-        })
-        test('should return count of vowel in word',
-        function () {
-            const result = vowelCount('555')
-            expect(result).toBe(0)
-        })
-})
+// 11
+describe('makeArmy', () => {
+	const shooters = makeArmy(10);
 
-//  10
+	test('should return it`s position in array', () => {
+		const result = shooters[0]();
 
-describe('alphabetPosition', function () {
-    test('should return 5 when passed "The sunset sets at twelve o`clock."', function () {
-        const result = alphabetPosition('The sunset sets at twelve o`clock.')
-        expect(result).toBe("20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11")
-    })
-})
+		expect(result).toBe(0);
+	});
+
+	test('should return it`s position in array', () => {
+		const result = shooters[5]();
+
+		expect(result).toBe(5);
+	});
+
+	test('should return it`s position in array', () => {
+		const result = shooters[9]();
+
+		expect(result).toBe(9);
+	});
+
+});
+
+describe('createPrevArgSaver', () => {
+
+	const argSaver = createPrevArgSaver();
+  
+	test('should return first argument from the previous call', () => {
+	  const result = argSaver(123);
+  
+	  expect(result).toBe(undefined);
+	});
+  
+	test('should return first argument from the previous call', () => {
+  
+	  argSaver(123);
+  
+	  const result = argSaver(456);
+  
+	  expect(result).toBe(123);
+	});
+  
+	test('should return first argument from the previous call', () => {
+  
+	  argSaver(123);
+	  argSaver(456);
+  
+	  const result = argSaver(100, 200, 300);
+  
+	  expect(result).toBe(456);
+	});
+  
+	test('should return first argument from the previous call', () => {
+  
+	  argSaver(123);
+	  argSaver(456);
+	  argSaver(100, 200, 300);
+  
+	  const result = argSaver();
+  
+	  expect(result).toBe(100);
+	});
+  
+	test('should return first argument from the previous call', () => {
+  
+	  argSaver(123);
+	  argSaver(456);
+	  argSaver(100, 200, 300);
+	  argSaver();
+  
+	  const result = argSaver(741);
+  
+	  expect(result).toBe(undefined);
+	});
+  
+  });
+
+  describe('createAdder', () => {
+	const adder1 = createAdder();
+	const adder2 = createAdder(100);
+
+	test('should return 0  ', () => {
+		const result = adder1();
+
+		expect(result).toBe(0);
+	});
+
+	test('should return 30  ', () => {
+
+		adder1();
+
+		const result = adder1(10, 20);
+
+		expect(result).toBe(30);
+	});
+
+	test('should return 100  ', () => {
+
+		adder1();
+
+		const result = adder1(30, 40);
+
+		expect(result).toBe(100);
+	});
+
+	test('should return 110  ', () => {
+
+		const result = adder2(10);
+
+		expect(result).toBe(110);
+	});
+
+	test('should return 200  ', () => {
+
+		const result = adder2(20, 30, 40);
+
+		expect(result).toBe(200);
+	});
+
+	test('should return 200  ', () => {
+
+		const result = adder2();
+
+		expect(result).toBe(200);
+	});
+
+});
